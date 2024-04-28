@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
+import { useState } from "react"
 
 import ErrorMessage from "../errors/ErrorMessage";
 
 import "./ShowsIndex.css";
 
 export default function ShowsIndex() {
+  const [ loadingError, setLoadingError ] = useState(false);
+
   return (
     <div>
-      {false ? (
+      {loadingError ? (
         <ErrorMessage />
       ) : (
         <section className="shows-index-wrapper">
