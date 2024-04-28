@@ -6,7 +6,6 @@ import { getAllShows } from "../../api/fetch.js"
 import ErrorMessage from "../errors/ErrorMessage";
 import ShowListing from "./ShowListing";
 
-
 import "./ShowsIndex.css";
 
 export default function ShowsIndex() {
@@ -17,7 +16,16 @@ export default function ShowsIndex() {
 
   function handleTextChange(e) {
     const title = e.target.value;
+    const result = title.length ? filterShows(title, allShows) : allShows
+
     setSearchTitle(title);
+    setShows(result)
+  }
+
+  function filterShows(search, shows) {
+    return shows.filter((show) => {
+      return show.title.match(search.toLowerCase());
+    });
   }
 
   useEffect(() => {
