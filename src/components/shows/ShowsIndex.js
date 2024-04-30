@@ -24,7 +24,7 @@ export default function ShowsIndex() {
 
   function filterShows(search, shows) {
     return shows.filter((show) => {
-      return show.title.match(search.toLowerCase());
+      return show.title.toLowerCase().match(search.toLowerCase());
     });
   }
 

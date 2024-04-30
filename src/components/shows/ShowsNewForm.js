@@ -17,7 +17,6 @@ export default function ShowsForm() {
     rating: "",
     releaseYear: "",
   });
-  console.log(JSON.stringify(show))
 
   let navigate = useNavigate();
 
