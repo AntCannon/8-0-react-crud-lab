@@ -1,19 +1,27 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 import "./Show.css";
 
 import ErrorMessage from "../errors/ErrorMessage";
 
-import { getOneShow } from "../../api/fetch";
+import { getOneShow, destroyShow } from "../../api/fetch";
 
 function Show() {
   const [show, setShow] = useState({});
   const [loadingError, setLoadingError] = useState(false);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  function handleDelete() {}
+  function handleDelete() {
+    destroyShow(id)
+    .then(() => navigate("/shows"))
+    .catch((error) => {
+      console.error(error);
+      setLoadingError(true);
+    });
+  }
 
   useEffect(() => {
     getOneShow(id)

@@ -3,12 +3,22 @@ const URL = process.env.REACT_APP_API_BASE_URL;
 
 // Create
 export function createShow(show) {
-  return;
+  const options = {
+    method: "POST",
+    body: JSON.stringify(show),
+    headers: { "Content-Type": "application/json" },
+  };
+  return fetch(`${URL}/shows/`, options).then((response) => {
+    return response.json();
+  });
 }
+
+// fetch(URL, options)
 
 // Delete
 export function destroyShow(id) {
-  return;
+  const options = {method: "DELETE"};
+  return fetch(`${URL}/shows/${id}`, options);
 }
 
 // Index/Get all
